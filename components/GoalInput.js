@@ -15,20 +15,32 @@ const GoalInput = props => {
   };
 
   return (
-    <Modal visible={props.visible} animationType="slide">
+    <Modal
+      visible={props.visible}
+      transparent={true}
+      animationType="slide"
+      style={styles.modalContent}
+    >
       <View style={styles.content}>
-        <TextInput
-          placeholder="Type Your Goal"
-          style={styles.textGoal}
-          onChangeText={setEnteredGoal}
-          value={enteredGoal}
-        />
-        <View style={styles.buttonContent}>
-          <View style={styles.button}>
-            <Button title="Cancel" color="red" onPress={cancelAddGoalHandler} />
-          </View>
-          <View style={styles.button}>
-            <Button title="Save" onPress={addGoalHandler} />
+        <View style={styles.modalStyle}>
+          <TextInput
+            placeholder="Type Your Goal"
+            style={styles.textGoal}
+            onChangeText={setEnteredGoal}
+            value={enteredGoal}
+            autoFocus={true}
+          />
+          <View style={styles.buttonContent}>
+            <View style={styles.button}>
+              <Button
+                title="Cancel"
+                color="red"
+                onPress={cancelAddGoalHandler}
+              />
+            </View>
+            <View style={styles.button}>
+              <Button title="Save" onPress={addGoalHandler} />
+            </View>
           </View>
         </View>
       </View>
@@ -40,11 +52,19 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "rgba(0,0,0,0.7)"
+  },
+  modalStyle: {
+    width: "80%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f0f0fa",
+    borderRadius: 20
   },
   textGoal: {
     borderColor: "gray",
-    borderWidth: 1,
+    borderBottomWidth: 1,
     borderRadius: 3,
     padding: 10,
     width: "80%",
@@ -56,7 +76,8 @@ const styles = StyleSheet.create({
     width: "60%"
   },
   button: {
-    width: "40%"
+    width: "40%",
+    paddingBottom: 20
   }
 });
 
